@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Backstretch: a simple jQuery plugin that allows you to add a dynamically-resized background image to any page</title>
+	<link href='http://fonts.googleapis.com/css?family=Gravitas+One' rel='stylesheet' type='text/css'>
+	<link href="http://srobbin.github.com/chosen/chosen.css" rel="stylesheet" type="text/css" />
+	<meta name="viewport" content="width=1024">
+	<link href="styles.css?v=3" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="content">
+        <h1>Backstretch</h1>
+        <p>a simple jQuery plugin that allows you to add a dynamically-resized, slideshow-capable background image to any page or element<br />
+            <span style="font-size: 80%">by <a href="http://srobbin.com">Scott Robbin</a></span>
+        </p>
+        <p><a href="https://raw.github.com/jquery-backstretch/jquery-backstretch/master/jquery.backstretch.min.js" class="btn btn-large btn-success download">Download Backstretch Now</a><br />
+            <a class="download-alternate" href="http://cdnjs.com/#jquery-backstretch">link to a hosted copy on cdnjs.com</a><br />
+            <a class="download-alternate" href="https://github.com/jquery-backstretch/jquery-backstretch/zipball/master">or download the entire project, including examples.</a>
+        </p>
+        <p>
+            <a href="https://twitter.com/srobbin" class="twitter-follow-button" data-show-count="false">Follow @srobbin</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="srobbin" data-count="none" data-text="Backstretch: a simple jQuery plugin that adds dynamically-resized background images to any page.">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </p>
+        <hr />
+
+        <p>Do you see the full-sized background image on this page? In a nutshell, that's what Backstretch does. It will stretch any image to fit the page or block-level element, and will automatically resize as the window or element size changes.</p>
+        <p>Images are fetched after your page is loaded, so your users won't have to wait for the (often large) image to download before using your site.</p>
+        <hr />
+
+        <h2>Demos</h2>
+        <button id="outside" class="demo-change btn btn-info">Click to show Image 1</button>
+        <button id="cheers" class="demo-change btn btn-info">Click to show Image 2</button>
+        <div id="demo" class="snippet">
+        </div>
+        <hr />
+
+        <h2>Where can I get it?</h2>
+        <p>
+            If you are interested in learning more about Backstretch, it's recommended that you view <a href="https://github.com/srobbin/jquery-backstretch" title="Backstretch on GitHub">the project on GitHub</a>.<br />
+            There, you will find the source code, and additional options that the script accepts.
+        </p>
+        <p><a href="https://raw.github.com/srobbin/jquery-backstretch/master/jquery.backstretch.min.js" class="btn btn-large btn-success download">Download Backstretch Now</a><br />
+        <a class="download-alternate" href="http://cdnjs.com/#jquery-backstretch">link to a hosted copy on cdnjs.com</a><br />
+        <a class="download-alternate" href="https://github.com/srobbin/jquery-backstretch/zipball/master">or download the entire project, including examples.</a></p>
+        <hr />
+
+        <h2>Support</h2>
+        <p>Basic support is offered through <a href="https://github.com/jquery-backstretch/jquery-backstretch/issues">Github's issues tracker</a>. Many requests are resolved through the help of fellow Backstretch users and myself, however assistance is not guaranteed or timely.</p>
+        <hr />
+
+        <h2>Other jQuery Plugins</h2>
+        <p>If you like this plugin, feel free to check out some of the others I've built.</p>
+        <ul class="plugins">
+            <li>
+                <h3><a href="../intelligist/" title="jQuery Intelligist plugin">Intelligist</a></h3>
+                <p>
+                    Share and demo code in-page, using<br />GitHub gists.
+                </p>
+            </li>
+            <li>
+                <h3><a href="../approach/" title="jQuery Approach plugin">Approach</a></h3>
+                <p>
+                    Animate CSS properties based on<br> distance to an object.
+                </p>
+            </li>
+        </ul>
+
+        <div class="footer">
+            <hr />
+            <span>This plugin is distributed under the <a href="https://raw.github.com/jquery-backstretch/jquery-backstretch/master/LICENSE-MIT">MIT license</a>.</span>
+        </div>
+
+        <a href="https://github.com/jquery-backstretch/jquery-backstretch"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/camo.github.com/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub"></a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://srobbin.github.com/chosen/chosen.jquery.min.js"></script>
+    <script src="http://srobbin.github.com/intelligist/jquery.intelligist.min.js?v=1.0.5"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.3/jquery.backstretch.min.js"></script>
+    <script>
+        // Preload the images
+        var images = [
+              "http://dl.dropbox.com/u/515046/www/outside.jpg"
+            , "http://dl.dropbox.com/u/515046/www/garfield-interior.jpg"
+            , "http://dl.dropbox.com/u/515046/www/cheers.jpg"
+            , "http://dl.dropbox.com/u/515046/www/coffee-light.jpg"
+          ];
+
+        // A little script for preloading all of the images
+        // It"s not necessary, but generally a good idea
+        $(images).each(function(){
+            $("<img/>")[0].src = this;
+        });
+
+        $("#demo").intelligist({
+            "1976643": "Basic usage"
+          , "3668973": "On a block-level element"
+          , "1978678": "Using Backstretch as a slideshow"
+          , "1978737": "Attach Backstretch to click events"
+        }, {
+            exec: true
+          , before: function(oldGistId, newGistId) {
+                var $clickers = $("button#outside, button#cheers");
+
+                // Destroy the old Backstretches
+                $(":backstretch").each(function() {
+                    $(this).data("backstretch").destroy();
+                });
+
+                // Unbind click events, in case they view the demo twice
+                $("#outside, cheers").unbind("click");
+
+                // Special stuff for the click demo
+                if( newGistId == "1978737" ) {
+                    // The click slideshow should start off with a backstretch
+                    $.backstretch( images[1] );
+                    $clickers.show();
+                } else {
+                    $clickers.hide();
+                }
+            }
+          , after: function() {
+                // Hack to overcome delay in Gist resize
+                try {
+                    setInterval(function() {
+                        $("#demo").data("backstretch") && $("#demo").data("backstretch").resize();
+                    }, 1000);
+                } catch(err) {}
+            }
+        });
+    </script>
+</body>
