@@ -296,10 +296,11 @@
 	  background-color: #24748c \9;
 	}
 
-/* Advertisement
-================================================== */
+  .github-fork-ribbon,
+  .github-fork-ribbon:hover {
+    border: none;
+  }
 
-    .advertisement { margin-bottom: -20px; }
-    .advertisement a { border: none; }
-    .advertisement img { border: 1px solid #ccc; }
-    .advertisement h5 { text-transform: uppercase;  font-size: 10px; }
+  .github-fork-ribbon:before {
+    background-color: #f80;
+  }
